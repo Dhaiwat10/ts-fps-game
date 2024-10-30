@@ -1,9 +1,9 @@
-import { Raycaster } from 'three';
-import { Renderer } from './engine/renderer';
-import { Player } from './game/player';
-import { World } from './game/world';
-import { Crosshair } from './ui/crosshair';
-import { Score } from './ui/score'
+import { Raycaster } from "three";
+import { Renderer } from "./engine/renderer";
+import { Player } from "./game/player";
+import { World } from "./game/world";
+import { Crosshair } from "./ui/crosshair";
+import { Score } from "./ui/score";
 
 class Game {
   private renderer: Renderer;
@@ -20,11 +20,11 @@ class Game {
 
     this.world.getScene().add(this.player.gun.getMesh());
 
-    document.addEventListener('shoot', (e: any) => {
+    document.addEventListener("shoot", (e: any) => {
       this.handleShoot(e.detail.raycaster);
     });
 
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
       this.onWindowResize();
     });
 
@@ -32,6 +32,7 @@ class Game {
   }
 
   private handleShoot(raycaster: Raycaster) {
+    console.log("LOOK IM HITTING");
     const hit = this.world.checkHit(raycaster);
     if (hit) {
       this.score.increment(100);
